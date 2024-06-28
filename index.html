@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+    <html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Twasol-Hail-Medical-Supplies</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="scripts.js"></script>
+        
+        
+    </head>
+    
+    <body>
+        
+
+        <!-- نموذج تسجيل الدخول -->
+        <div id="maintitle-container">
+            <h1 id="bigtitle">تواصل</h1>
+            
+        </div>
+        <!-- شريط التنقل -->
+        <div id="navbar" style="display:none;">
+            <ul style="flex-grow: 1; display: flex; justify-content: flex-start;">
+                <li><a href="#" onclick="showHomePage()">الصفحة الرئيسية</a></li>
+                <li><a href="#" onclick="showAddReportForm()">اضافة بلاغ جديد</a></li>
+                <li><a href="#" class="outhover" onclick="logout()">تسجيل خروج</a></li>
+            </ul>
+        </div>
+        
+        <!-- الأيقونات -->
+        <div id="icons-container" style="display:none;">
+            <div class="icon-box">
+                <span class="icon-title" style= "color: red;">بلاغ جديد</span>
+                <span class="icon-count" id="new-count" style="color: red;">0</span>
+            </div>
+            <div class="icon-box">
+                <span class="icon-title" style="color: green;">تحت الإجراء</span>
+                <span class="icon-count" id="under-process-count" style="color: green;">0</span>
+            </div>
+            <div class="icon-box">
+                <span class="icon-title" style="color: rgb(14, 14, 146);">بلاغ مغلق</span>
+                <span class="icon-count" id="closed-count" style="color: rgb(14, 14, 146)">0</span>
+            </div>
+        </div>
+    
+        <div id="login-container">
+            <h2 id="login-title">مرحبًا</h2>
+            <p>ادخل صلاحيات الدخول أدناه :</p>
+                <div style="justify-content: center;">
+                    <input type="text" id="username" placeholder="اسم المستخدم">
+                    <input type="password" id="password" placeholder="كلمة المرور">
+                </div>
+                <div style="display: flex; justify-content: center;">
+                     <button onclick="login(event)">تسجيل الدخول</button>
+                </div>
+        </div>
+        <!-- الصفحة الرئيسية -->
+        <div id="main-container" style="display:none;">
+            <section id="content">
+                <!-- محتوى الصفحة الرئيسية -->
+                <div id="home-page" style="display:none;">
+                    <table id="reports-table">
+                        <thead>
+                            <tr>
+                                <th>رقم البلاغ</th>
+                                <th>البلاغ</th>
+                                <th>التاريخ والوقت</th>
+                                <th>اسم المنشأة</th>
+                                <th>اسم المستخدم</th>
+                                <th>حالة البلاغ</th>
+                                <th>الردود</th>
+                                <th id="actions-header" style="display:none;">الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- سيتم إضافة البلاغات هنا بواسطة JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- نموذج اضافة بلاغ جديد -->
+                <div id="add-report-form" style="display:none;">
+                    <h2>اضافة بلاغ جديد</h2>
+                    <label>إسم المنشأة :</label>
+                    <select id="facility-name">
+                        <option value="التموين الطبي بحائل">التموين الطبي بحائل</option>
+                        <option value="مستشفى الملك سلمان بحائل">مستشفى الملك سلمان بحائل</option>
+                        <option value="مستشفى الملك خالد بحائل">مستشفى الملك خالد بحائل</option>
+                        <option value="مستشفى الصحة النفسية بحائل">مستشفى الصحة النفسية بحائل</option>
+                        <option value="مستشفى النساء والولادة بحائل">مستشفى النساء والولادة بحائل</option>
+                        <option value="مستشفى شراف بحائل">مستشفى شراف بحائل</option>
+                        <option value="مستشفى سميراء العام">مستشفى سميراء العام </option>
+                        <option value="مستشفى بقعاء العام">مستشفى بقعاء العام </option>
+                        <option value="مستشفى الشنان العام">مستشفى الشنان العام </option>
+                        <option value="مستشفى موقق العام">مستشفى موقق العام </option>
+                        <option value="مستشفى الشملي العام">مستشفى الشملي العام </option>
+                        <option value="مستشفى الغزالة العام">مستشفى الغزالة العام </option>
+                        <option value="مستشفى السليمي العام">مستشفى السليمي العام </option>
+                        
+                        <!-- إضافة بقية المنشآت هنا -->
+                    </select>
+                    
+                    <textarea cols="40" rows="4" id="report-text" placeholder="وصف البلاغ..."></textarea>
+                    <br>
+                    <button onclick="addReport()" style="background-color: green; color: white;" class="TRRR">اضافة بلاغ</button>
+                    <button onclick="clearForm()" style="background-color: rgb(233, 49, 49); color: white;" class="TRRR">مسح</button>
+                    <button onclick="closeForm()" style="background-color: rgb(30, 98, 187); color: white;" class="TRRR">رجوع</button>
+                </div>
+            </section>
+        </div>
+    
+        <div id="report-details" style="display:none;">
+            <!--<button onclick="closeReportDetails()">رجوع</button>-->
+            <div id="report-content"></div>
+            <div id="responses-content"></div>
+        </div>
+    
+    
+        <footer> 
+            
+            <p>programmed by : <a href="mailto:falshammari24@moh.gov.sa">fahd - alshammari</a></p>
+        </footer>
+    
+        
+    </body>
+    </html>
+    
+
